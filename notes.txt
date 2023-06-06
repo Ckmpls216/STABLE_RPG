@@ -1,0 +1,13 @@
+Spritesheet Coordinates
+    
+    Ground = (64, 352, self.width, self.height) 
+
+    Block = (960, 448, self.width, self.height)
+
+    Water = (864, 160, self.width, self.height)
+
+    TallGrass = (540, 352, self.width, self.height) 
+
+
+
+    Idle Player = (3, 2, self.width, self.height)
