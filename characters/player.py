@@ -1,6 +1,6 @@
 # player.py
 import pygame
-from config import *
+from utils.config import *
 import math
 import random
 import sys

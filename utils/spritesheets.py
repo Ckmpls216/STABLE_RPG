@@ -1,6 +1,6 @@
 # spritesheets.py
 import pygame
-from config import *
+from utils.config import *
 
 class Spritesheets:
     def __init__(self, file):

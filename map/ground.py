@@ -1,12 +1,11 @@
-# tallgrass.py
-import pygame
-from config import *
+# ground.py
+import pygame  # Import the pygame library for game development
+from utils.config import *  # Import the configuration constants
 
-
-class TallGrass(pygame.sprite.Sprite):
+class Ground(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game  # Store a reference to the game instance
-        self._layer = GRASS_LAYER  # Set the layer for sprite ordering
+        self._layer = GROUND_LAYER  # Set the layer for sprite ordering
         self.groups = self.game.all_sprites  # Assign the sprite groups to which the object belongs
         pygame.sprite.Sprite.__init__(self, self.groups)  # Initialize the sprite base class
         
@@ -15,7 +14,7 @@ class TallGrass(pygame.sprite.Sprite):
         self.width = TILESIZE  # Set the width of the ground tile
         self.height = TILESIZE  # Set the height of the ground tile
         
-        self.image = self.game.terrain_spritesheet.get_sprite(540, 352, self.width, self.height)  # Load the sprite image for the ground tile
+        self.image = self.game.terrain_spritesheet.get_sprite(64, 352, self.width, self.height)  # Load the sprite image for the ground tile
         
         self.rect = self.image.get_rect()  # Get the rectangle that encloses the ground tile image
         self.rect.x = self.x  # Set the x-coordinate of the ground tile rectangle

@@ -1,11 +1,13 @@
+# main.py
 import pygame
-from block import *
-from config import *
-from ground import *
-from player import *
-from spritesheets import *
-from tallgrass import *
-from tilemap import *
+from map.block import *
+from utils.config import *
+from map.ground import *
+from map.dirtpath import DirtPath
+from characters.player import *
+from utils.spritesheets import *
+from map.tallgrass import *
+from map.tilemap import *
 import sys
 
 class Game:
@@ -34,6 +36,8 @@ class Game:
                     self.player = Player(self, j, i)  # Create the player character
                 if column == "T":
                     TallGrass(self, j, i)  # Create enemy characters
+                if column == "x":
+                    DirtPath(self, j, i)
                 
             
         

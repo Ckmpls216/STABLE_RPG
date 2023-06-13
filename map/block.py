@@ -1,6 +1,6 @@
 # block.py
 import pygame
-from config import *
+from utils.config import *
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
