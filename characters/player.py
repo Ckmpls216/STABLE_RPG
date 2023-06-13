@@ -149,5 +149,5 @@ class Player(pygame.sprite.Sprite):
                     self.rect.y = hits[0].rect.bottom
                     
 
-        
-            
+
+

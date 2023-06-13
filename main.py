@@ -10,6 +10,36 @@ from map.tallgrass import *
 from map.tilemap import *
 import sys
 
+
+
+class Inventory:
+    def __init__(self):
+        self.items = [[None]*5 for _ in range(5)] # 5x5 inventory slots
+        
+    def add_item(self, item):
+        for i in range (5):
+            for j in range (5):
+                if self.items[i][j] is None:
+                    self.items[i][j] = item
+                    return True
+        return False
+    
+    def remove_item(self, item):
+        for i in range (5):
+            for j in range (5):
+                if self.items[i][j] == item:
+                    self.items[i][j] = None
+                    return True
+        return False # Item Not Found
+    
+    
+    def has_item(self, item):
+        for i in range (5):
+            for j in range (5):
+                if self.items[i][j] == item:
+                    return True
+        return False
+            
 class Game:
     def __init__(self):
         pygame.init()
@@ -22,6 +52,24 @@ class Game:
         self.terrain_spritesheet = Spritesheets('img/terrain.png')  # Load the spritesheet for the terrain
         
         self.player = None  # Reference to the player instance
+        
+        self.inventory = Inventory()
+        self.show_inventory = False
+        
+        
+    def drawInventory(self):
+        if self.show_inventory:
+            slot_width = 40
+            slot_height = 40
+            padding = 5
+            for i in range (5):
+                for j in range (5):
+                    rect = pygame.Rect(WIN_WIDTH - (5-j)*(slot_width+padding), WIN_HEIGHT - (5-i)*(slot_height+padding), slot_width, slot_height)
+                    pygame.draw.rect(self.screen, WHITE, rect, 2)
+                    if self.inventory.items[i][j] is not None:
+                        # Draw Item In Slot (replace 'item_image' with your items image)
+                        self.screen.blit(item_image, rect)
+                        
         
     def createTilemap(self):
         # Create the tilemap for the game world
@@ -59,6 +107,9 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_i:
+                    self.show_inventory = not self.show_inventory
                 
         
             
@@ -80,6 +131,7 @@ class Game:
             sprite.rect.y += player_offset_y
 
         self.all_sprites.draw(self.screen)  # Draw all the sprites on the screen
+        self.drawInventory()
         self.clock.tick(FPS)
         pygame.display.update()
 
