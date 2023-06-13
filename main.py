@@ -1,5 +1,6 @@
 # main.py
 import pygame
+from item import *
 from map.block import *
 from utils.config import *
 from map.ground import *
@@ -68,7 +69,7 @@ class Game:
                     pygame.draw.rect(self.screen, WHITE, rect, 2)
                     if self.inventory.items[i][j] is not None:
                         # Draw Item In Slot (replace 'item_image' with your items image)
-                        self.screen.blit(item_image, rect)
+                        self.screen.blit(self.inventory.items[i][j].image, rect)
                         
         
     def createTilemap(self):
@@ -99,6 +100,9 @@ class Game:
         self.attacks = pygame.sprite.LayeredUpdates()
         
         self.createTilemap()
+        
+        for _ in range(3):
+            self.inventory.add_item(PokeBall())
 
         
     def events(self):
