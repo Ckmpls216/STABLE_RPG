@@ -11,8 +11,8 @@ class TallGrass(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.groups)  # Initialize the sprite base class
         
         self.x = x * TILESIZE  # Calculate the x-coordinate of the ground tile
-        self.y = y * TILESIZE  # Calculate the y-coordinate of the ground tile
-        self.width = TILESIZE  # Set the width of the ground tile
+        self.y = y * TILESIZE # Calculate the y-coordinate of the ground tile
+        self.width = TILESIZE   # Set the width of the ground tile
         self.height = TILESIZE  # Set the height of the ground tile
         
         self.image = self.game.terrain_spritesheet.get_sprite(540, 352, self.width, self.height)  # Load the sprite image for the ground tile

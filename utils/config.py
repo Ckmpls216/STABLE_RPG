@@ -30,3 +30,4 @@ GROUND_LAYER = 1  # Layer for the ground sprites
 WATER_LAYER = 2
 GRASS_LAYER = 2
 
+
