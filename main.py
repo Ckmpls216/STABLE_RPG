@@ -26,7 +26,7 @@ class Inventory:
         return item in self.items  # Check if item exists in the list
 
 
-class Player:
+class PlayerInventory:
     def __init__(self):
         self.inventory = Inventory()  # Player's inventory
 
@@ -42,7 +42,7 @@ class Game:
         self.character_spritesheet = Spritesheets('img/character.png')  # Load the spritesheet for the character
         self.terrain_spritesheet = Spritesheets('img/terrain.png')  # Load the spritesheet for the terrain
 
-        self.player = Player()  # Reference to the player instance
+        self.playerInventory = PlayerInventory()  # Reference to the player inventory instance
 
     def createTilemap(self):
         # Create the tilemap for the game world
